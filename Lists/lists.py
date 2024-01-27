@@ -1,5 +1,6 @@
 # A list is an ordered sequence that can hold a variety of object types
 # A list is denoted by square brackets and its elements are separated by commas
+# A list is used where objects are retrieved by location hence can be indexed or sliced
 my_list = [1,2,3]
 
 # A list can hold different object types
