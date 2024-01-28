@@ -17,6 +17,8 @@ myfile.close()
 with open('/home/nyae/LearnPython/LearnPython/Files/basic.txt', mode= 'r') as newfile:
     contents = newfile.read()
     print(contents)
+
+
 # How to add a new line to the file
     with open('/home/nyae/LearnPython/LearnPython/Files/basic.txt', mode='a') as addline:
         content_data = addline.write('\n this is the fourth line')
@@ -26,3 +28,4 @@ with open('/home/nyae/LearnPython/LearnPython/Files/basic.txt', mode= 'r') as ne
         latest = f.write('I created this file')
         print(latest)
         # I get a traceback error which i'll figure out later, I'm hungry
+        
