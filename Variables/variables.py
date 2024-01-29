@@ -19,3 +19,8 @@ my_income = 100
 my_tax_rate = 0.1
 taxes = my_income * my_tax_rate
 print(taxes)
+
+
+# 
+math = 100.25 -40
+print(math)
