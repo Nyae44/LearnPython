@@ -44,7 +44,7 @@ size_num1 = 4
 size_num2 = 5 
 check_size = size_num1 > size_num2
 print(check_size)
-
+ 
 reverse = size_num2 < size_num1
 print(reverse)
 
@@ -55,3 +55,35 @@ print(numcode)
 
 numcode1 = 1 <= 2
 print(numcode1)
+
+# Chaining comparison operators 
+# We can use logical operators when chaining comparison operators; and, or , not
+variable1 = 1
+variable2 = 2
+variable3 = 3
+variable1 < variable2
+variable2 < variable3
+1 < 2 
+2 < 3
+
+# Can be chained into 
+variable1 < variable2 < variable3
+1 < 2 < 3
+
+# We could use logical operators 
+# And needs both conditions to be true 
+
+multi_check = variable1 < variable2 and variable2 < variable1
+print(multi_check)
+
+test = 'h' == 'h' and 2 == 2
+print(test)
+
+# or keyword -> needs one condition to be true 
+calc = variable1 == variable1 or variable2 == variable2
+print(calc)
+
+# Chaining comparison operators using logical operators ensures code readability
+
+# not Keyword  -> returns the opposite boolean of what we just did i.e the predecessor operator
+not(1==1) # evaluates to false
