@@ -6,7 +6,7 @@ with open('/home/nyae/LearnPython/LearnPython/Files/basic.txt', 'r') as f:
     # Indented code goes here
     # This is ideal when working with small files
     # We can pass in the number of characters we want printed out as an argument to the function read()
-    size_to_read = 100
+    size_to_read = 100 
     contents = f.read(size_to_read)
     while len(contents)>0:
         print(contents, end='')
