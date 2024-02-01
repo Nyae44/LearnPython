@@ -76,3 +76,42 @@ def sum_numbers(num1, num2):
     return num1 + num2
 result = sum_numbers('10','20') 
 print(result) # Prints out '1020' since the plus sign concatenates the string
+# TODO: Address this issue!
+
+# Functions with logic
+def even_check(number):
+    result = number % 2 == 0 # This assignment is for knowledge purpose you could directly return number % 2 ==0  its just the same thing
+    return result
+check_number = even_check(39)
+print(check_number)
+
+# A function that returns True if any number is even inside a list
+# Think of return as essentially breaking out of the function
+# It is wrong to call another return statement after an initial one within the same indentation
+# Instead break out of the indentation and return in line with the for loop indentation
+def check_even_list(numlist):
+    for number in numlist:
+        if number % 2 == 0:
+            return True
+        else:
+            pass
+    return False
+list_checker = check_even_list([2,4,6])
+print(list_checker)
+
+# Edgecases
+first_number_even = check_even_list([2,1,1,1,1,1])
+print(first_number_even)
+last_number_even = check_even_list([1,1,1,1,12])
+print(last_number_even)
+
+# Return even numbers in a list
+def return_even_numbers_list(numberlist):
+    even_numbers = []
+    for number in numberlist:
+        if number % 2 == 0:
+            return even_numbers.append(number)
+        else:
+            pass
+    return even_numbers
+        
