@@ -114,4 +114,106 @@ def return_even_numbers_list(numberlist):
         else:
             pass
     return even_numbers
+
+# Tuple unpacking with python functions 
+
+# Recall
+
+stock_prices = [('Apple', 200), ('Google', 400), ('Microsoft', 100)]
+# We could print all items as 
+for item in stock_prices:
+    print(item)
+
+# We could do tuple unpacking 
+for company, stock_price in stock_prices:
+    print(company)
+    print(stock_price)
+
+# Report a 10% increase
+for company, stock_price in stock_prices:
+    print(stock_price + (0.1 * stock_price))
+
+# We could do tuple unpacking with Python functions 
+work_hours = [('Daley', 100), ('Billy', 2000),('Audrey', 150), ('James', 250)]
+# We want to get the employee that worked for the most hours 
+
+def check_employee(work_hours):
+    # Placeholder varible -> Is a variable with which we will assign a varible later 
+    current_max = 0
+    employee_of_the_month = ''
+
+    for employee, hours in work_hours:
+        if hours > current_max:
+            current_max = hours
+            employee_of_the_month = employee
+        else:
+            pass
+
+    # Return
+    return (employee_of_the_month, current_max)
+
         
+check_results = check_employee(work_hours)
+print(check_results)
+
+# We could also print them as seperate varibales
+
+name, hours = check_employee(work_hours)
+print(name)
+print(hours)
+
+# Interactions between functions
+
+example = [1,2,3,4,5,6,7,8,9]
+
+# If you want to randomly shuffle the list we import shuffle from the random library
+from random import shuffle
+shuffle(example)
+print(example)
+
+# We create a guessing game to illustrate how functions interact with other functions 2
+# Lets create our own function that can create the list and shuffle it 
+def shuffle_list(my_list):
+    shuffle(my_list)
+    return my_list
+
+result = shuffle_list(example)
+print(result)
+
+# User has to guess the position of 'O'
+my_list = ['','O','']
+
+# Create a user guess function to illustrate this 
+def player_guess():
+    guess = ''
+   
+
+    while guess not in ['0','1','2']:
+         guess = input('Pick a number, 0,1 or 2  ')
+   
+    return int(guess)
+
+
+# myindex = player_guess()
+# print(myindex)
+
+# We create another function to check whether the guess is correct 
+
+def check_guess(my_list,guess):
+    if my_list[guess] == 'O':
+        print('Correct!')
+    else:
+        print('Wrong guess!')
+        print(my_list)
+
+
+# Order of functions
+
+# Initial list
+my_list = ['','O','']
+# Shuffle list
+mixeduplist = shuffle_list(my_list)
+# User guess
+guess = player_guess()
+# Check guess 
+check_guess(mixeduplist,guess)
