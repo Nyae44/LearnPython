@@ -11,17 +11,41 @@ class NameOfClass():
         print(self.param1)
 """
 
+from math import pi
+
+
 class Dog():
-    def __init__(self, breed, name, spots):
+    # Class object attribute 
+    # Is the same for any instance of a  class
+    # We use species since class is a keyword in python
+    species = 'mammal'
+    def __init__(self, breed, name):
         # Attributes 
         # We take in the argument 
         # Assign it using self.attribute
         self.breed = breed
         self.name = name
         
-        # Expect boolean True/False
-        self.spots = spots
+        #
+    # Methods are operations/ actions 
+    # Methods can take outside arguments 
+    def bark(self, age):  #self connects bark to the actual object
+        print('Wooof my name is {} aged {}'.format(self.name, age))
         
-my_dog = Dog('Rottweiler', 'Jiji', True)
+        
+my_dog = Dog('Rottweiler', 'Jiji')
 print(type(my_dog))
 print(my_dog.breed)
+print(my_dog.bark(10))
+
+
+class Circle():
+    # Class object attribute 
+    pi = 3.14 
+    
+    def __init__(self, radius = 1):
+        self.radius = radius
+      
+      # Method   
+    def circumferrence(self):
+        return self.radius * pi * 2
