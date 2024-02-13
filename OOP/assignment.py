@@ -9,7 +9,7 @@ class Line():
         self.coor2 = coor2
         
     def distance(self):
-        return (((self.coor2[0]-self.coor1[0])**2)+((self.coor2[1]-self.coor1[1])**2)) **0.5
+        return ((self.coor2[0]-self.coor1[0])+(self.coor2[1]-self.coor1[1])) **0.5
     def slope(self):
         return ((self.coor2[1]-self.coor1[1])/ (self.coor2[0]-self.coor1[0]))
         
@@ -38,7 +38,7 @@ class Cylinder():
         self.radius = radius
     def volume(self):
         # pi * r ** 2
-        return (Cylinder.pi * self.radius * self.radius)
+        return (Cylinder.pi * self.radius ** 2 * self.height)
     
     def surface_area(self):
         # (2 * pi * r * height) + (2 * pi * r * r)
