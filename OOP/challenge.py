@@ -27,7 +27,7 @@ class Account():
         self.balance = self.balance + deposit_amount
         return str(self)
     def withdraw(self, withdrawal_amount):
-        if withdrawal_amount > self.balance:
+        if withdrawal_amount >= self.balance:
             print(" Funds Unavailable")
         else:
             self.balance = self.balance - withdrawal_amount
