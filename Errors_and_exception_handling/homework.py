@@ -3,20 +3,20 @@ Problem 1
 Handle the exception thrown by the code below by using try and except blocks.
 """
 
-for i in ['a','b','c']:
-    try:
-        print(1**2)
-    except TypeError: 
-        print("Found a TypeError")
+try:
+    for i in ['a','b','c']:
+        print(i**2)
+except TypeError:
+    print("Found a type error")
+    
         
 """
 Problem 2
 Handle the exception thrown by the code below by using try and except blocks. Then use a finally block to print 'All Done.'
 """
-x = 5
-y = 0
-
 try:
+    x = 5
+    y = 0
     print(x/y)
 except ZeroDivisionError:
     print("Found a ZeroDivisionError")
