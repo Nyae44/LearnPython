@@ -168,5 +168,34 @@ while game_on:
     - A player loses if they dont have at least 5 cards to play the war
     '''
      
-    
-    
+    # at war
+    at_war = True
+    while at_war:
+        if player_one_cards[-1].value > player_two_cards[-1].value:
+            player_one.add_cards(player_one_cards)
+            player_one.add_cards(player_two_cards)
+
+            at_war = False
+        elif player_one_cards[-1].value < player_two_cards[-1].value:
+            player_two.add_cards(player_two_cards)
+            player_two.add_cards(player_one_cards)
+            
+            at_war = False
+        else:
+            print('WAR')
+            
+            if len(player_one.all_cards) < 5:
+                print("Player one unable to declare war")
+                print("Player two wins")
+                game_on = False
+                break
+            elif len(player_two.all_cards) < 5:
+                print("Player two unable to declare war")
+                print("Player one wins")
+                game_on = False
+                break
+            else:
+                for num in range(3):
+                    player_one_cards.append(player_one.remove_one())
+                    player_two_cards.append(player_two.remove_one())
+                    
