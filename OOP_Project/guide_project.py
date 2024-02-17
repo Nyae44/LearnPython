@@ -101,3 +101,72 @@ new_player.add_cards([my_card,my_card,my_card,my_card])
 print(new_player)
 new_player.remove_one()
 print(new_player)
+
+# Game Logic 
+
+'''
+- Create two instances of the player class
+    - player_1
+    - player_2
+- Create an instance of the new deck
+    - Half deck to player_1 
+    - Half deck to player_2
+- Check for 0 cards 
+- Outer while loop passed boolean values to state if game is still on
+- Logic to draw additional cards 
+'''
+# Game setup
+player_one = Player("One")
+player_two = Player("Two")
+
+new_deck = Deck()
+new_deck.shuffle()
+
+for x in range(26):
+    player_one.add_cards(new_deck.deal_one())
+    player_two.add_cards(new_deck.deal_one())
+    
+# check if it works 
+
+print(len(player_one.all_cards))
+
+game_on = True
+
+# counter 
+round_num = 0 
+
+while game_on:
+    round_num += 1
+    print(f"Round {round_num}")
+    
+    if len(player_one.all_cards) == 0:
+        print('player one, out of cards, player 2 wins')
+        game_on = False
+        break
+    if len(player_two.all_cards) == 0:
+        print('player two, out of cards, player 1 wins')
+        game_on = False
+        break
+    
+    # start a new round 
+    player_one_cards = []
+    player_one_cards.append(player_one.remove_one())
+    
+    player_two_cards = []
+    player_two_cards.append(player_two.remove_one())
+    
+    # check player's cards against each other
+    '''
+    player one > player two
+    player one < player two
+    player one == player two
+    
+    - state at_war = False if the players resolve the match-up,
+      on first drawn card, otherwise we will add cards to the current,
+      cards on the table.
+    - RULES: Each player needs to draw 5 additional cards in case of a tie.
+    - A player loses if they dont have at least 5 cards to play the war
+    '''
+     
+    
+    
