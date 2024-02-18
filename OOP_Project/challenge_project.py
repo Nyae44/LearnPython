@@ -71,4 +71,6 @@ pulled_card = test_deck_.deal()
 print(pulled_card)
 test_player.add_card(pulled_card)
 print(test_player.value)
-    
+
+
+# implement chip class
