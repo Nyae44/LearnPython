@@ -169,9 +169,15 @@ while game_on:
     '''
      
     # at war
+    # This occurs when the cards are equal.
+    # We'll grab another card each and continue the current war.
+            
+    # First check to see if player has enough cards
+            
+    # Check to see if a player is out of cards:
     at_war = True
     while at_war:
-        if player_one_cards[-1].value > player_two_cards[-1].value:
+        if player_one_cards[-1] > player_two_cards[-1].value:
             player_one.add_cards(player_one_cards)
             player_one.add_cards(player_two_cards)
 
@@ -181,6 +187,7 @@ while game_on:
             player_two.add_cards(player_one_cards)
             
             at_war = False
+    
         else:
             print('WAR')
             
