@@ -3,6 +3,7 @@
 # import the random module - Allows us to shuffle the deck
 import random
 
+
 suits = ('Hearts','Diamonds','Spades','Clubs')
 ranks = ('Two', 'Three','Four','Five','Six','Seven','Eight','Nine','Ten','Jack','Queen','King','Ace')
 values = {'Two':2, 'Three':3,'Four':4,'Five':5,'Six':6,'Seven':7,'Eight':8,'Nine':9,'Ten':10,'Jack':10,'Queen':10,'King':10,'Ace':11}
@@ -93,3 +94,96 @@ class Chips():
         self.total += self.bet
     def lose_bet(self):
         self.total -= self.bet
+        
+# functions for game play
+
+def take_bet(chips):
+    while True:
+        try:
+            chips.bet = int(input('How many chips would you like to bet? '))
+        except:
+            print('Sorry, please provide an integer!')
+        else:
+            if chips.bet > chips.Total:
+                print('Sorry, you do not have enough chips! you have: {}'.format(chips.total))
+            else:
+                break
+            
+            
+# Function taking hits
+
+def hit(deck,hand):
+    single_card = deck.deal()
+    hand.add_card(single_card)
+    hand.adjust_for_ace()
+    
+# Function prompting the player to hit or stand
+def hit_or_stand(deck,hand):
+    global playing  # To control an upcoming while loop
+    while True:
+        x = input('Hit or Stand? Enter h or s ')
+        if x[0].lower() == 'h':
+            hit(deck,hand)
+        elif x[0].lower() == 's':
+            print("Player stands Dealer's turn")
+            playing = False
+        else: 
+            print("Sorry I did not understand that please enter h or s only")
+            continue
+        break
+    
+
+# Functions to display cards 
+
+def show_some(player,dealer):
+    # Show only one of the dealer's cards
+    print("\n Dealer's Hand: ")
+    print("First card hidden!")
+    print(dealer.cards[1])
+    # Show all (2 cards) of the player's hand/cards
+    print("\n Player's hand")
+    for card in player.cards:
+        print(card)
+def show_all(player,dealer):
+    # show all the dealer's cards 
+    print("Dealer's hand")
+    for card in dealer.cards:
+        print(card)
+    # We can also avoid the for loops and use the following code
+    # sep = separator
+    """
+    print("Value of Dealer's hand is ",*dealer.cards, sep='\n')
+    """
+    # Calculate and display value(j+k == 20)
+    print(f"Value of Dealer's hand is: {dealer.value}")
+    # show all players cards
+    print("\n Player hand")
+    for card in player.cards:
+        print(card)
+    print(f"Value of Player's hand is: {player.value}")
+    
+# looping alternative 
+items = [1,2,3]
+for item in items:
+    print(item)
+    
+# alternative
+print("items: ",*items)
+
+# functions to handle end of game scenarios
+def player_busts(player,dealer,chips):
+    print("BUST PLAYER!")
+    chips.lose_bet()
+def player_wins(player,dealer,chips):
+    print("PLAYER WINS")
+    chips.win_bet()
+def dealer_busts(player,dealer,chips):
+    print("PLAYER WINS, DEALER BUSTED")
+    chips.win_bet()
+def dealer_wins(player,dealer,chips):
+    print("DEALER WINS")
+    chips.win_bet()
+def push(player,dealer):
+    print("Dealer and player tie, PUSH")
+    
+# Game logic script
