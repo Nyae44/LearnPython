@@ -104,7 +104,7 @@ def take_bet(chips):
         except:
             print('Sorry, please provide an integer!')
         else:
-            if chips.bet > chips.Total:
+            if chips.bet > chips.total:
                 print('Sorry, you do not have enough chips! you have: {}'.format(chips.total))
             else:
                 break
@@ -187,3 +187,68 @@ def push(player,dealer):
     print("Dealer and player tie, PUSH")
     
 # Game logic script
+
+while True:
+    # print an opening statement 
+    print('Welcome to BlackJack')
+    # Create and shuffle the deck, deal two cards to each player 
+    deck = Deck()
+    deck.shuffle()
+    player_hand = Hand()
+    player_hand.add_card(deck.deal())
+    player_hand.add_card(deck.deal())
+    
+    dealer_hand = Hand()
+    dealer_hand.add_card(deck.deal())
+    dealer_hand.add_card(deck.deal())
+    
+    # set up the player chips 
+    player_chips = Chips()
+    
+    # prompt the player for their bet 
+    take_bet(player_chips)
+    
+    # show cards but keep one dealer hidden 
+    show_some(player_hand,dealer_hand)
+    
+    while playing: # recall this variable from hit_or_stand function
+        # Prompt for player to Hit or Stand 
+        hit_or_stand(deck,player_hand)
+    
+    # Show cards (but keep one dealer card hidden)
+    show_some(player_hand,dealer_hand)
+    
+    # If player cards exceed 21 run player_busts() and break out of the loop
+    if player_hand.value > 21:
+        player_busts(player_hand,dealer_hand,player_chips)
+        
+        break
+    # If player has'nt busted, play dealer's hand until Dealer reaches 17
+    if player_hand.value > 21:
+        while dealer_hand.value < 17:
+            hit(deck,dealer_hand)
+        # show all cards 
+        show_all(player_hand,dealer_hand)
+    
+    # Run different winning scenarios   
+    if dealer_hand.value > 21:
+        dealer_busts(dealer_hand,player_hand,player_chips)
+    elif dealer_hand.value > player_hand.value:
+        dealer_wins(dealer_hand,player_hand,player_chips)
+    elif dealer_hand.value < player_hand.value:
+        player_wins(player_hand,dealer_hand,player_chips)
+    else:
+        push(player_hand,dealer_hand)
+        
+    # inform player of remaining chips 
+    print('Player total chips are at: {}'.format(player_chips.total))
+    
+    # ask again to play
+    new_game = input('Would you like to play another hand? y or n: ')
+    
+    if new_game[0].lower() == 'y':
+        playing = True 
+        continue 
+    else:
+        print('Thank you for playing')
+        break
