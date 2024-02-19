@@ -56,8 +56,17 @@ class Hand():
         # from Deck.deal() -> suit,rank
         self.cards.append(card)
         self.value += values[card.rank]
+        
+        # track Aces 
+        if card == 'Ace':
+            self.aces +=1
     def adjust_for_ace(self):
-        pass
+        # if total value > 21 and I still have an Ace
+        # Change my Ace to be a 1 instead of 11
+        while self.value > 21 and self.aces:
+            self.value -= 10
+            self.aces -= 1
+            
 
 # testing 
 
@@ -74,3 +83,13 @@ print(test_player.value)
 
 
 # implement chip class
+
+class Chips():
+    def __init__(self, total =100):
+        self.total = total # This can be set to a default value or by user input
+        self.bet = 0
+        
+    def win_bet(self):
+        self.total += self.bet
+    def lose_bet(self):
+        self.total -= self.bet
