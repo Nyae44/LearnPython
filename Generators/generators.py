@@ -42,7 +42,7 @@ def simple_gen():
         yield x
         
         
-for num in simple_gen():
+for num in simple_gen(): 
     print(num)
     
 # using the next keyword 
